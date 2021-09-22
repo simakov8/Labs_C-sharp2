@@ -7,45 +7,61 @@ namespace _053506_SIM__Lab1
   {
     public Shop()
     {
-      products = new MyCustomCollection<Product>();
-      purchases = new MyCustomCollection<(Person, Product)>();
+      m_products = new MyCustomCollection<Product>();
+      m_purchases = new MyCustomCollection<(Person, Product)>();
+      m_customers = new MyCustomCollection<Person>();
     }
-    private MyCustomCollection<Product> products;
-    private MyCustomCollection<(Person, Product)> purchases;
+    private MyCustomCollection<Product> m_products;
+    private MyCustomCollection<Person> m_customers;
+    private MyCustomCollection<(Person, Product)> m_purchases;
 
+    public delegate void ProductAddedHandler(Product product);
+    public event ProductAddedHandler ProductAdded;
     public void AddProduct(Product product)
     {
-      products.Add(product);
+      m_products.Add(product);
+      ProductAdded?.Invoke(product);
     }
 
+    public delegate void CustomerAddedHandler(Person customer);
+    public event CustomerAddedHandler CustomerAdded;
+    public void AddCustomer(Person customer)
+    {
+      m_customers.Add(customer);
+      CustomerAdded?.Invoke(customer);
+    }
+
+    public delegate void PurchaseMakedHandler(Person person, string productName);
+    public event PurchaseMakedHandler PurchaseMaked;
     public void MakePurchase(Person person, string productName)
     {
       Product product = null;
-      for (int i = 0; i < products.Count; i++)
+      for (int i = 0; i < m_products.Count; i++)
       {
-        if (products[i].Name == productName)
+        if (m_products[i].Name == productName)
         {
-          product = products[i];
+          product = m_products[i];
           continue;
         }
       }
       if (product == null)
         throw new Exception("Product not found");
       else
-        purchases.Add((person, product));
+        m_purchases.Add((person, product));
+      PurchaseMaked?.Invoke(person, product.Name);
     }
 
     public void ShowInfoBySecondName(string sName)
     {
       int totalPrice = 0;
       int count = 0;
-      for (int i = 0; i < purchases.Count; i++)
+      for (int i = 0; i < m_purchases.Count; i++)
       {
-        if (purchases[i].Item1.SecondName == sName)
+        if (m_purchases[i].Item1.SecondName == sName)
         {
-          totalPrice += purchases[i].Item2.Price;
+          totalPrice += m_purchases[i].Item2.Price;
           Console.WriteLine("{0}) product", ++count);
-          purchases[i].Item2.ShowInfo();
+          m_purchases[i].Item2.ShowInfo();
         }
       }
 
