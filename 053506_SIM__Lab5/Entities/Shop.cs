@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace _053506_SIM__Lab1
 {
@@ -7,19 +7,19 @@ namespace _053506_SIM__Lab1
   {
     public Shop()
     {
-      m_products = new MyCustomCollection<Product>();
-      m_purchases = new MyCustomCollection<(Person, Product)>();
-      m_customers = new MyCustomCollection<Person>();
+      m_products = new Dictionary<string, Product>();
+      m_purchases = new List<(Person, Product)>();
+      m_customers = new List<Person>();
     }
-    private MyCustomCollection<Product> m_products;
-    private MyCustomCollection<Person> m_customers;
-    private MyCustomCollection<(Person, Product)> m_purchases;
+    private Dictionary<string, Product> m_products;
+    private List<Person> m_customers;
+    private List<(Person, Product)> m_purchases;
 
     public delegate void ProductAddedHandler(Product product);
     public event ProductAddedHandler ProductAdded;
     public void AddProduct(Product product)
     {
-      m_products.Add(product);
+      m_products.Add(product.Name, product);
       ProductAdded?.Invoke(product);
     }
 
@@ -36,14 +36,15 @@ namespace _053506_SIM__Lab1
     public void MakePurchase(Person person, string productName)
     {
       Product product = null;
-      for (int i = 0; i < m_products.Count; i++)
+      foreach (var iterProduct in m_products)
       {
-        if (m_products[i].Name == productName)
+        if (iterProduct.Key == productName)
         {
-          product = m_products[i];
+          product = iterProduct.Value;
           continue;
         }
       }
+
       if (product == null)
         throw new Exception("Product not found");
       else
