@@ -26,6 +26,7 @@ namespace _053506_SIM__Lab1
       shop.AddCustomer(vasya);
       vasya.ShowInfo();
       shop.MakePurchase(vasya, "car");
+      shop.MakePurchase(vasya, "car");
       shop.MakePurchase(vasya, "gun");
       shop.MakePurchase(petya, "house");
       try
@@ -39,6 +40,31 @@ namespace _053506_SIM__Lab1
       shop.ShowInfoBySecondName("Pupkin");
 
       jornal.ShowLog();
+
+      Console.WriteLine();
+
+      shop.ShowProducts();
+
+      Console.WriteLine();
+
+      Console.WriteLine(shop.GetTotalPayment());
+
+      Console.WriteLine();
+
+      Console.WriteLine(shop.GetPersonsTotalPayment("Pupkin"));
+      Console.WriteLine(shop.GetPersonsTotalPayment("Gubkin"));
+
+      Console.WriteLine();
+
+      Console.WriteLine(shop.GetCountRegularCustomers(193));
+
+      Console.WriteLine();
+
+      Console.WriteLine(shop.GetMaxPaymentName());
+
+      dynamic evereProductPayments = shop.GetEveryProductPayments("Pupkin");
+      foreach (var pr in evereProductPayments)
+        Console.WriteLine("{0} - {1}", pr.productName, pr.totalPayment);
     }
   }
 }
