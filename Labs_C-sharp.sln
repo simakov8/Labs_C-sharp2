@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "053506_SIM__Lab7", "053506_SIM__Lab7\053506_SIM__Lab7.csproj", "{B6465665-FE6F-4B1E-BF24-85478523FE44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "053506_SIM_Lab8", "053506_SIM_Lab8\053506_SIM_Lab8.csproj", "{2CCBF7ED-1CA3-4EFB-8982-73AEACCCE7B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B6465665-FE6F-4B1E-BF24-85478523FE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6465665-FE6F-4B1E-BF24-85478523FE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6465665-FE6F-4B1E-BF24-85478523FE44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CCBF7ED-1CA3-4EFB-8982-73AEACCCE7B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCBF7ED-1CA3-4EFB-8982-73AEACCCE7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCBF7ED-1CA3-4EFB-8982-73AEACCCE7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCBF7ED-1CA3-4EFB-8982-73AEACCCE7B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
