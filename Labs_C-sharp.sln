@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "053506_SIM__Lab7", "053506_SIM__Lab5\053506_SIM__Lab7.csproj", "{B6465665-FE6F-4B1E-BF24-85478523FE44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "053506_SIM__Lab7", "053506_SIM__Lab7\053506_SIM__Lab7.csproj", "{B6465665-FE6F-4B1E-BF24-85478523FE44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
