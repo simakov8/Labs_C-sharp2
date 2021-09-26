@@ -18,11 +18,13 @@ namespace _053506_SIM_Lab8
 
       string path1 = @".\employees1.dat";
       string path2 = @".\employees2.dat";
+
       using (File.Create(path1)) { };
 
       FileService fileService = new FileService();
       fileService.SaveData(employees1, path1);
 
+      File.Delete(path2);
       File.Move(path1, path2);
 
       List<Employee> employees2 = new List<Employee>(fileService.ReadFile(path2));
