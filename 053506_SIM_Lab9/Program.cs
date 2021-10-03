@@ -16,21 +16,6 @@ namespace _053506_SIM_Lab9
       Library library3 = new Library("Maksima Tanka");
       Library library4 = new Library("Yanka Bril");
 
-      Reader reader = new Reader("Ivan");
-      library.AddReader(reader);
-
-      Reader reader1 = new Reader("Petr");
-      library1.AddReader(reader1);
-
-      Reader reader2 = new Reader("Gena");
-      library2.AddReader(reader2);
-
-      Reader reader3 = new Reader("Vasya");
-      library3.AddReader(reader3);
-
-      Reader reader4 = new Reader("Arcadiy");
-      library4.AddReader(reader4);
-
       Book book = new Book("It", "Stephen King", "1");
       library.AddBook(book);
       library1.AddBook(book);
@@ -45,18 +30,6 @@ namespace _053506_SIM_Lab9
       library.AddBook(book2);
       library3.AddBook(book2);
       library4.AddBook(book2);
-
-      library.MakeOrder("Ivan", "1");
-      library1.MakeOrder("Petr", "1");
-      library2.MakeOrder("Gena", "2");
-      library3.MakeOrder("Vasya", "3");
-      library4.MakeOrder("Arcadiy", "2");
-
-      Console.WriteLine(library.GetInfo());
-      Console.WriteLine(library1.GetInfo());
-      Console.WriteLine(library2.GetInfo());
-      Console.WriteLine(library3.GetInfo());
-      Console.WriteLine(library4.GetInfo());
     }
   }
 }

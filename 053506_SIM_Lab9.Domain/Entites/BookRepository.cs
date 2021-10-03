@@ -24,18 +24,5 @@ namespace _053506_SIM_Lab9
     {
       return m_Books[isbn];
     }
-
-    public string GetInfo()
-    {
-      StringBuilder res = new StringBuilder();
-
-      int count = 0;
-      foreach (var book in m_Books)
-      {
-        res.AppendFormat("\t{0}) Book title: {1, 35},\tAuthor: {2, 10},\t ISBN: {3}\n", ++count, book.Value.Name, book.Value.Author, book.Key);
-      }
-
-      return res.ToString();
-    }
   }
 }

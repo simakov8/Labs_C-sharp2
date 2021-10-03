@@ -44,7 +44,6 @@
     <Compile Include="Entites\Book.cs" />
     <Compile Include="Entites\BookRepository.cs" />
     <Compile Include="Entites\Library.cs" />
-    <Compile Include="Entites\Reader.cs" />
     <Compile Include="Interfaces\ISerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
