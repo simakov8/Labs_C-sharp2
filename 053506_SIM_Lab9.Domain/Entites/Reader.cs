@@ -19,6 +19,8 @@ namespace _053506_SIM_Lab9
 
     public void AddBook(string libraryName, Book book)
     {
+      if (!m_Books.ContainsKey(libraryName))
+        m_Books.Add(libraryName, new List<Book>());
       m_Books[libraryName].Add(book);
     }
     public void RemoveBook(string libraryName, Book book)
