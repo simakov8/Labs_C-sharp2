@@ -4,21 +4,23 @@ using System.Text;
 
 namespace _053506_SIM_Lab9
 {
+  [Serializable]
   public class Library
   {
+    public Library() { }
     public Library(string name)
     {
       Name = name;
       BookRepository = new BookRepository();
     }
 
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
-    public BookRepository BookRepository { get; private set; }
+    public BookRepository BookRepository { get; set; }
     
     public void AddBook(Book book)
     {
-      BookRepository.AddBook(book);
+      BookRepository.Add(book);
     }
 
     public override bool Equals(object lib)

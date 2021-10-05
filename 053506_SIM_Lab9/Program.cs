@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace _053506_SIM_Lab9
 {
@@ -34,11 +36,17 @@ namespace _053506_SIM_Lab9
       libraries[3].AddBook(book2);
       libraries[4].AddBook(book2);  
 
-      // Serialize
       Serializer serializer = new Serializer();
+
+      // Serialize by LINQ
       serializer.SerializeByLINQ(libraries, "libraries.xml");
       Library[] librariesByLINQ = serializer.DeSerializeByLINQ("libraries.xml").ToArray();
       Console.WriteLine(libraries.SequenceEqual(librariesByLINQ));
+
+      // Serialize XML
+      serializer.SerializeXML(libraries, "libraries1.xml");
+      Library[] librariesXML = serializer.DeSerializeXML("libraries1.xml").ToArray();
+      Console.WriteLine(libraries.SequenceEqual(librariesXML));
     }
   }
 }

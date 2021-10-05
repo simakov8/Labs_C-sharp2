@@ -14,7 +14,15 @@ namespace _053506_SIM_Lab9
 
     private Dictionary<string, Book> m_Books;
 
-    public void AddBook(Book book)
+    public Dictionary<string, Book> Books
+    {
+      get
+      {
+        return m_Books;
+      }
+    }
+
+    public void Add(Book book)
     {
       m_Books.Add(book.ISBN, book);
     }

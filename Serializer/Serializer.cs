@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace _053506_SIM_Lab9
 {
@@ -34,7 +36,11 @@ namespace _053506_SIM_Lab9
 
     public IEnumerable<Library> DeSerializeXML(string fileName)
     {
-      throw new NotImplementedException();
+      XmlSerializer formatter = new XmlSerializer(typeof(Library[]));
+      using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+      {
+        return (Library[])formatter.Deserialize(fs);
+      }
     }
 
     public void SerializeByLINQ(IEnumerable<Library> libraries, string fileName)
@@ -69,7 +75,11 @@ namespace _053506_SIM_Lab9
 
     public void SerializeXML(IEnumerable<Library> libraries, string fileName)
     {
-      throw new NotImplementedException();
+      XmlSerializer formatter = new XmlSerializer(typeof(Library[]));
+      using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+      {
+        formatter.Serialize(fs, (Library[])libraries);
+      }
     }
   }
 }

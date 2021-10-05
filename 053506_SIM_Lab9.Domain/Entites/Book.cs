@@ -8,6 +8,7 @@ namespace _053506_SIM_Lab9
 {
   public class Book
   {
+    public Book() { }
     public Book(string name, string author, string isbn)
     {
       Name = name;
@@ -15,9 +16,9 @@ namespace _053506_SIM_Lab9
       ISBN = isbn;
     }
 
-    public string Name { get; private set; }
-    public string Author { get; private set; }
-    public string ISBN { get; private set; }
+    public string Name { get; set; }
+    public string Author { get; set; }
+    public string ISBN { get; set; }
 
     public bool Equals(Book book)
     {
