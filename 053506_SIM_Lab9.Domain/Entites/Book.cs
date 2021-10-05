@@ -18,5 +18,10 @@ namespace _053506_SIM_Lab9
     public string Name { get; private set; }
     public string Author { get; private set; }
     public string ISBN { get; private set; }
+
+    public bool Equals(Book book)
+    {
+      return (Name == book.Name) && (Author == book.Author) && (ISBN == book.ISBN);
+    }
   }
 }

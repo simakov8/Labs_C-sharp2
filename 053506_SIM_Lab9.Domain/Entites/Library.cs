@@ -9,16 +9,22 @@ namespace _053506_SIM_Lab9
     public Library(string name)
     {
       Name = name;
-      m_BookRepository = new BookRepository();
+      BookRepository = new BookRepository();
     }
 
     public string Name { get; private set; }
 
-    private BookRepository m_BookRepository;
+    public BookRepository BookRepository { get; private set; }
     
     public void AddBook(Book book)
     {
-      m_BookRepository.AddBook(book);
+      BookRepository.AddBook(book);
+    }
+
+    public override bool Equals(object lib)
+    {
+      Library library = (Library)lib;
+      return (Name == library.Name) && BookRepository.Equals(library.BookRepository);
     }
   }
 }

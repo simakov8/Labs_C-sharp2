@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace _053506_SIM_Lab9
 {
-  public class BookRepository
+  public class BookRepository : IEnumerable<Book>
   {
     public BookRepository()
     {
@@ -23,6 +25,22 @@ namespace _053506_SIM_Lab9
     public Book GetBookById(string isbn)
     {
       return m_Books[isbn];
+    }
+
+    public IEnumerator<Book> GetEnumerator()
+    {
+      foreach (var book in m_Books)
+        yield return book.Value;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public bool Equals(BookRepository books)
+    {
+      return books.m_Books.OrderBy(kvp => kvp.Key).SequenceEqual(books.m_Books.OrderBy(kvp => kvp.Key));
     }
   }
 }

@@ -10,26 +10,35 @@ namespace _053506_SIM_Lab9
   {
     static void Main(string[] args)
     {
-      Library library = new Library("Yakuba Kolasa");
-      Library library1 = new Library("Yanki Kupala");
-      Library library2 = new Library("Maksima Bogdanovicha");
-      Library library3 = new Library("Maksima Tanka");
-      Library library4 = new Library("Yanka Bril");
+      Library[] libraries =
+      {
+        new Library("Yakuba Kolasa"),
+        new Library("Yanki Kupala"),
+        new Library("Maksima Bogdanovicha"),
+        new Library("Maksima Tanka"),
+        new Library("Yanka Bril")
+      };
 
       Book book = new Book("It", "Stephen King", "1");
-      library.AddBook(book);
-      library1.AddBook(book);
-      library3.AddBook(book);
+      libraries[0].AddBook(book);
+      libraries[1].AddBook(book);
+      libraries[3].AddBook(book);
 
       Book book1 = new Book("White Fang", "Jack London", "2");
-      library1.AddBook(book1);
-      library2.AddBook(book1);
-      library4.AddBook(book1);
+      libraries[1].AddBook(book1);
+      libraries[2].AddBook(book1);
+      libraries[4].AddBook(book1);
 
       Book book2 = new Book("Object-Oriented Programming in C++", "Robet Lafore", "3");
-      library.AddBook(book2);
-      library3.AddBook(book2);
-      library4.AddBook(book2);
+      libraries[0].AddBook(book2);
+      libraries[3].AddBook(book2);
+      libraries[4].AddBook(book2);  
+
+      // Serialize
+      Serializer serializer = new Serializer();
+      serializer.SerializeByLINQ(libraries, "libraries.xml");
+      Library[] librariesByLINQ = serializer.DeSerializeByLINQ("libraries.xml").ToArray();
+      Console.WriteLine(libraries.SequenceEqual(librariesByLINQ));
     }
   }
 }
