@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _053506_SIM_Lab9
 {
@@ -17,7 +15,7 @@ namespace _053506_SIM_Lab9
     public string Name { get; set; }
 
     public BookRepository BookRepository { get; set; }
-    
+
     public void AddBook(Book book)
     {
       BookRepository.Add(book);
@@ -25,8 +23,12 @@ namespace _053506_SIM_Lab9
 
     public override bool Equals(object lib)
     {
-      Library library = (Library)lib;
-      return (Name == library.Name) && BookRepository.Equals(library.BookRepository);
+      if (lib is Library)
+      {
+        Library library = (Library)lib;
+        return (Name == library.Name) && BookRepository.Equals(library.BookRepository);
+      }
+      return false;
     }
   }
 }

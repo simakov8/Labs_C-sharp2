@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _053506_SIM_Lab9
+﻿namespace _053506_SIM_Lab9
 {
   public class Book
   {
@@ -20,9 +14,10 @@ namespace _053506_SIM_Lab9
     public string Author { get; set; }
     public string ISBN { get; set; }
 
-    public bool Equals(Book book)
+    public override bool Equals(object book)
     {
-      return (Name == book.Name) && (Author == book.Author) && (ISBN == book.ISBN);
+      Book book1 = (Book)book;
+      return (Name == book1.Name) && (Author == book1.Author) && (ISBN == book1.ISBN);
     }
   }
 }

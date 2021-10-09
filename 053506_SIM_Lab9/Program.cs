@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace _053506_SIM_Lab9
 {
@@ -34,7 +29,7 @@ namespace _053506_SIM_Lab9
       Book book2 = new Book("Object-Oriented Programming in C++", "Robet Lafore", "3");
       libraries[0].AddBook(book2);
       libraries[3].AddBook(book2);
-      libraries[4].AddBook(book2);  
+      libraries[4].AddBook(book2);
 
       Serializer serializer = new Serializer();
 
@@ -47,6 +42,11 @@ namespace _053506_SIM_Lab9
       serializer.SerializeXML(libraries, "libraries1.xml");
       Library[] librariesXML = serializer.DeSerializeXML("libraries1.xml").ToArray();
       Console.WriteLine(libraries.SequenceEqual(librariesXML));
+
+      // Serialize JSON
+      serializer.SerializeJSON(libraries, "libraries2.json");
+      Library[] librariesJSON = serializer.DeSerializeJSON("libraries2.json").ToArray();
+      Console.WriteLine(libraries.SequenceEqual(librariesJSON));
     }
   }
 }

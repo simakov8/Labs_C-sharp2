@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
@@ -31,7 +32,12 @@ namespace _053506_SIM_Lab9
 
     public IEnumerable<Library> DeSerializeJSON(string fileName)
     {
-      throw new NotImplementedException();
+      using (StreamReader file = File.OpenText(fileName))
+      {
+        JsonSerializer serializer = new JsonSerializer();
+        Library[] libraries = (Library[])serializer.Deserialize(file, typeof(Library[]));
+        return libraries;
+      }
     }
 
     public IEnumerable<Library> DeSerializeXML(string fileName)
@@ -70,7 +76,11 @@ namespace _053506_SIM_Lab9
 
     public void SerializeJSON(IEnumerable<Library> libraries, string fileName)
     {
-      throw new NotImplementedException();
+      using (StreamWriter file = File.CreateText(fileName))
+      {
+        JsonSerializer serializer = new JsonSerializer();
+        serializer.Serialize(file, libraries);
+      }
     }
 
     public void SerializeXML(IEnumerable<Library> libraries, string fileName)

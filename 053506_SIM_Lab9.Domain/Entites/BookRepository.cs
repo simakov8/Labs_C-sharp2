@@ -1,54 +1,42 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace _053506_SIM_Lab9
 {
+  [JsonObject]
   public class BookRepository : IEnumerable<Book>
   {
     public BookRepository()
     {
-      m_Books = new Dictionary<string, Book>();
+      Books = new List<Book>();
     }
 
-    private Dictionary<string, Book> m_Books;
-
-    public Dictionary<string, Book> Books
-    {
-      get
-      {
-        return m_Books;
-      }
-    }
+    public List<Book> Books { get; set; }
 
     public void Add(Book book)
     {
-      m_Books.Add(book.ISBN, book);
-    }
-    public bool IsBookExist(string isbn)
-    {
-      return m_Books.ContainsKey(isbn);
-    }
-    public Book GetBookById(string isbn)
-    {
-      return m_Books[isbn];
-    }
-
-    public IEnumerator<Book> GetEnumerator()
-    {
-      foreach (var book in m_Books)
-        yield return book.Value;
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-      throw new System.NotImplementedException();
+      Books.Add(book);
     }
 
     public bool Equals(BookRepository books)
     {
-      return books.m_Books.OrderBy(kvp => kvp.Key).SequenceEqual(books.m_Books.OrderBy(kvp => kvp.Key));
+      return Books.SequenceEqual(books.Books);
+    }
+
+    public IEnumerator<Book> GetEnumerator()
+    {
+      return Books.GetEnumerator();
+      //foreach (var book in Books)
+      //    yield return book;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+      return Books.GetEnumerator();
+      //foreach (var book in Books)
+      //  yield return book;
     }
   }
 }
