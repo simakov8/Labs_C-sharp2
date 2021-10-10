@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +12,21 @@ namespace _053506_SIM_Lab10
   {
     public IEnumerable<T> ReadFile(string fileName)
     {
-      throw new NotImplementedException();
+      using (StreamReader file = File.OpenText(fileName))
+      {
+        JsonSerializer serializer = new JsonSerializer();
+        T[] libraries = (T[])serializer.Deserialize(file, typeof(T[]));
+        return libraries;
+      }
     }
 
     public void SaveData(IEnumerable<T> data, string fileName)
     {
-      throw new NotImplementedException();
+      using (StreamWriter file = File.CreateText(fileName))
+      {
+        JsonSerializer serializer = new JsonSerializer();
+        serializer.Serialize(file, data);
+      }
     }
   }
 }
